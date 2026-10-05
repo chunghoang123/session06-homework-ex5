@@ -1,0 +1,21 @@
+[Unit]
+Description=Java App Service - Spring Boot demo
+After=network.target
+
+[Service]
+Type=simple
+User=java-runner
+Group=java-runner
+WorkingDirectory=/opt/java-app
+ExecStart=/usr/bin/sleep 1000
+# That vi du chay that Spring Boot, thay dong tren bang:
+# ExecStart=/usr/bin/java -jar /opt/java-app/app.jar
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
